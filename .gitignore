@@ -32,6 +32,9 @@ META-INF/*
 /target/
 */target/*
 /.settings/*
+.mvn
+mvnw
+mvnw.cmd
 /*.project/*
 # Eclipse artifacts, including WTP generated manifests
 /.classpath
