@@ -39,7 +39,14 @@ public class Employee implements Comparable<Employee> {
 
 	@Override
 	public int compareTo(Employee e) {
-		return this.getName().compareTo(e.getName());
+		if(this.getSalary()>e.getSalary()) {
+			return 1;
+		}else if(this.getSalary()<e.getSalary()) {
+			return -1;
+		}else {
+			return 0;
+		}
+		
 	}
 
 	@Override

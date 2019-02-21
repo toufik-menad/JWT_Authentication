@@ -3,6 +3,7 @@ package com.canada.shawinigan.pos.sets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -71,6 +72,37 @@ public class SetsApplication implements CommandLineRunner{
 		employees.stream().forEach(e ->{
 			System.out.println(e.getName() + " salary: "+ e.getSalary());
 		});
+		
+		final List<Employee>emps = new ArrayList<>();
+		final List<Employee>valid = new ArrayList<>();
+		for(int i =0;i<10000;i++) {
+			final Employee em = new Employee("em"+i,i);
+			emps.add(em);
+		}
+		
+		final long start = System.nanoTime();
+		for(Employee em: emps) {
+			if(em.getSalary()>=50) {
+				valid.add(em);
+			}
+		}
+		System.out.println(valid.size());
+		
+		final long end = System.nanoTime();
+		
+		System.out.print("total time: ------------------------");
+		System.out.print(end-start);
+		System.out.print("\n");
+		
+		final long start_1 = System.nanoTime();
+		final int targer = Collections.binarySearch(emps, new Employee(null,50));
+		final List<Employee>valid_1 = emps.subList(targer, emps.size());
+		System.out.println(valid_1.size());
+		final long end_1 = System.nanoTime();
+		System.out.print("\n"+"total time_1: ------------------------");
+		System.out.print(end_1-start_1);
+		
+		System.out.print("\n"+"-------------------DONE-----------------------");
 			
 	}
 	
